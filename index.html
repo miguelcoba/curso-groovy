@@ -506,67 +506,151 @@ println map.foo       // new value
           </code></pre>
         </section>
 
-
-
-
+        <section>
+          <h1>Ranges</h1>
+        </section>
 
         <section>
-          <h2></h2>
+          <h2>Ranges</h2>
+          <ul>
+            <li class="fragment">java.lang.Comparable</li>
+            <li class="fragment">next()/previous()</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Inclusive ranges</h2>
           <pre><code data-trim>
+def range = 5..8        // inclusive list: [5, 6, 7, 8]
+println range.size()    // 4
+println range.get(2)    // 7
+println range[2]        // 7
+println range instanceof java.util.List // true
+println range.contains(5)    // true
+println range.contains(8)    // true
+println range.from           // 5
+println range.to             // 8
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Exclusive ranges</h2>
           <pre><code data-trim>
+def range = 1..<4    // inclusive list: [1, 2, 3]
+println range.size()    // 3
+println range.get(2)    // 3
+println range[2]        // 3
+println range instanceof java.util.List    // true
+println range.contains(1)    // true
+println range.contains(4)    // false
+println range.from           // 1
+println range.to             // 3
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Example 1</h2>
           <pre><code data-trim>
+def range = 'a'..'c'
+println range.size()      // 3
+println range[2]          // 'c'
+println range.from        // 'a'
+println range.to          // 'c'
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Example 2</h2>
           <pre><code data-trim>
+for(i in 1..10) {
+  println "Hello ${i}"
+}
+
+(1..10).each { println it }
+
+def var
+switch(age) {
+  case 1..<18: var = "a"
+  case 18..99: var = "b"
+  default: var = "c"
+}
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h1>Strings</h1>
+        </section>
+
+        <section>
+          <h2>Delimited by " and '</h2>
           <pre><code data-trim>
+println "hello 'world'!"  // hello 'world'!
+println 'hello "world"!'  // hello "world"!
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Concatenation</h2>
           <pre><code data-trim>
+def a = "world!"
+println "hello" + world      // hello world!
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Multi-line</h2>
           <pre><code data-trim>
+def multiLineText = """hello\
+world\
+!
+"""
+println multiLineText   // hello world!
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
-          <pre><code data-trim>
+          <h2>GString</h2>
+          <ul>
+            <li>$variable inside "-delimited strings</li>
+            <li>${expression} inside "-delimited strings</li>
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Examples 1</h2>
           <pre><code data-trim>
+def w = "world"
+println "hello ${w}!"               // hello world!
+println "hello $w!"                 // hello world!
+println "today is: ${new Date()}"   // today is: Sun Oct 17 22:50:02 CDT 2010
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>Examples 2</h2>
           <pre><code data-trim>
+def str = "2010-10-22"
+def dateArray = str.split("-")
+def year = dateArray[0].toInteger()
+year = year + 1
+println (year + "-" + dateArray[1] + "-" + dateArray[2])
+println ([year, dateArray[1], dateArray[2]].join("-"))
+dateArray[0] = (dateArray[0].toInteger() + 1).toString()
+println (dateArray.join("-"))
+println "Miguel".replace("igu","anu")
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Regular expressions</h1>
+        </section>
+
+        <section>
+          <h2>regexp</h2>
+          <pre><code data-trim>
+==~ matches patterns
+==  matches equality
+//  delimiters for regexp
           </code></pre>
         </section>
 
