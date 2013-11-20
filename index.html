@@ -1,172 +1,666 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Groovy Tutorial</title>
+    <title>Groovy Tutorial</title>
 
-		<meta name="description" content="Groovy Tutorial">
-		<meta name="author" content="Miguel Cobá">
+    <meta name="description" content="Groovy Tutorial">
+    <meta name="author" content="Miguel Cobá">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="revealjs/css/reveal.min.css">
-		<link rel="stylesheet" href="revealjs/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="revealjs/css/reveal.min.css">
+    <link rel="stylesheet" href="revealjs/css/theme/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="revealjs/lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="revealjs/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Groovy</h1>
-					<h3>Introducción a Groovy</h3>
-					<p>
-						<small><a href="http://miguel.leugim.com.mx">Miguel Cobá</a> / <a href="http://twitter.com/MiguelCobaMtz">@MiguelCobaMtz</a></small>
-					</p>
-				</section>
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Groovy</h1>
+          <h3>Introduction</h3>
+          <p>
+            <small><a href="http://miguel.leugim.com.mx">Miguel Cobá</a> / <a href="http://twitter.com/MiguelCobaMtz">@MiguelCobaMtz</a></small>
+          </p>
+        </section>
 
-				<section>
-					<h2>Groovy</h2>
+        <section>
+          <h2>Groovy</h2>
           <ul>
-            <li class="fragment">es un Lenguaje Dinámico para la Java Virtual Machine</li>
-            <li class="fragment">es basado en Java pero con poderes adicionales</li>
-            <li class="fragment">está inspirado en Python, Ruby y Smalltalk</li>
-            <li class="fragment">tiene características de programación modernas</li>
-            <li class="fragment">soporta DSLs</li>
-            <li class="fragment">se integra con todas las clases y bibliotecas de Java</li>
-            <li class="fragment">se compila directamente a bytecodes de Java</li>
+            <li class="fragment">dynamic language for the Java Virtual Machine</li>
+            <li class="fragment">based upon Java but with additional power features</li>
+            <li class="fragment">inspired by Python, Ruby and Smalltalk</li>
+            <li class="fragment">has modern programming features</li>
+            <li class="fragment">supports Domain-Specific Languages</li>
+            <li class="fragment">integrates with all existing Java classes and libraries</li>
+            <li class="fragment">compiles straight to Java bytecodes</li>
           </ul>
-	
-					<aside class="notes">
-					  Características de Groovy	
-					</aside>
-				</section>
+  
+          <aside class="notes">
+            Groovy Features
+          </aside>
+        </section>
 
-				<section>
-					<h2>Groovy 1.8</h2>
-          <p>Groovy 1.8 requiere JDK 1.7</p>
+        <section>
+          <h2>Groovy 1.8</h2>
+          <p>Groovy 1.8 requires JDK 1.7</p>
         </section> 
   
-				<section>
-					<h2>Instalación de Java</h2>
+        <section>
+          <h2>Java setup</h2>
           <ol>
             <li class="fragment">http://www.oracle.com/technetwork/java/javase/downloads/index.html</li>
             <li class="fragment">Java SE Development Kit 7u21</li>
-            <li class="fragment">Crear variable de ambiente JAVA_HOME</li>
-            <li class="fragment">(Windows) Agregar %JAVA_HOME%\bin al PATH</li>
-            <li class="fragment">(GNU/Linux) Agregar $JAVA_HOME\bin al PATH</li>
+            <li class="fragment">Create JAVA_HOME environment variable</li>
+            <li class="fragment">(Windows) Add %JAVA_HOME%\bin to PATH</li>
+            <li class="fragment">(GNU/Linux) Add $JAVA_HOME\bin to PATH</li>
           </ol>
         </section> 
 
-				<section>
-					<h2>Instalación de Groovy</h2>
+        <section>
+          <h2>Groovy setup</h2>
           <ol>
             <li class="fragment">http://groovy.codehaus.org/Download</li>
             <li class="fragment">Groovy 1.8.9</li>
-            <li class="fragment">Descomprimir a C:\groovy-1.8.9</li>
-            <li class="fragment">Crear variable de ambiente GROOVY_HOME</li>
-            <li class="fragment">(Windows) Agregar %GROOVY_HOME%\bin al PATH</li>
-            <li class="fragment">(GNU/Linux) Agregar $GROOVY_HOME\bin al PATH</li>
+            <li class="fragment">Unzip to C:\groovy-1.8.9</li>
+            <li class="fragment">Create GROOVY_HOME environment variable</li>
+            <li class="fragment">(Windows) Add %GROOVY_HOME%\bin to PATH</li>
+            <li class="fragment">(GNU/Linux) Add $GROOVY_HOME\bin to PATH</li>
           </ol>
         </section> 
 
-				<section>
-					<h2>Programas instalados por Groovy</h2>
+        <section>
+          <h2>Groovy Programs</h2>
           <ul>
             <li class="fragment">(Shell) groovysh</li>
             <li class="fragment">(GUI) groovyConsole</li>
-            <li class="fragment">(Intérprete) groovy script.groovy</li>
+            <li class="fragment">(Interpeter) groovy script.groovy</li>
           </ul>
         </section>
 
- 				<section>
-					<h2>Bibliotecas externas</h2>
+        <section>
+          <h2>External libraries</h2>
           <ul>
-            <li class="fragment">Agregarlas en %GROOVY_HOME%\lib</li>
+            <li class="fragment">Put them in %GROOVY_HOME%\lib</li>
           </ul>
         </section>
 
-				<section>
-					<h2>Primer programa Groovy</h2>
-					<pre><code data-trim>
-
+        <section>
+          <h2>First Groovy program</h2>
+          <pre><code data-trim>
 $ groovy -e "println 'Hello, world!'"
 Hello, world!
+          </code></pre>
+        </section>
 
-					</code></pre>
-				</section>
-
-				<section>
-					<h1>Lenguaje Groovy</h1>
+        <section>
+          <h1>Groovy Language</h1>
         </section>
  
-				<section>
-					<h2>Comentarios</h2>
-					<pre><code data-trim>
-// hasta el final de la línea
-/* entre delimitadores */
-/* con múltiples
-líneas */
-					</code></pre>
+        <section>
+          <h2>Comments</h2>
+          <pre><code data-trim>
+// until end of line
+/* between delimiters */
+/* with several
+lines */
+          </code></pre>
         </section>
-   
 
-				<section>
-					<h1>Fin</h1>
-					<p>Miguel Cobá / miguel.leugim.com.mx</p>
-				</section>
+        <section>
+          <h2>Strings</h2>
+          <pre><code data-trim>
+'Single quotes'
 
-			</div>
+'''Triple
+single
+quotes'''
 
-		</div>
+"Double quotes"
 
-		<script src="revealjs/lib/js/head.min.js"></script>
-		<script src="revealjs/js/reveal.min.js"></script>
+"""Triple
+double
+quotes"""
+          </code></pre>
+        </section>
 
-		<script>
+        <section>
+          <h2>Printing</h2>
+          <pre><code data-trim>
+println "hello world!"  // hello world!
+print 'hello world!\n'  // hello world!
+println("hello world!") // hello world!
+println("hello" + " " + "world" + "!") // hello world!
+def a = 5
+println "a number: ${a}, and a sum: ${1 + 3}" // a number: 5, and a sum: 4
+          </code></pre>
+        </section>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <section>
+          <h2>Assignment</h2>
+          <pre><code data-trim>
+def a = 5
+def b = 6.7
+def c = 7, d = 8
+int e = 9
+String str = "10"
+def str2 = "11"
+          </code></pre>
+        </section>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        <section>
+          <h2>Multiple assignment 1</h2>
+          <pre><code data-trim>
+def (x,y) = [1, 2]
+println x   // 1
+println y   // 2
+def someFunction() {
+  [ 1, 3, 5 ]
+}
+def (a, b, c) = someFunction()
+println "${a} ${b} ${c}"  // 1, 3, 5
+          </code></pre>
+        </section>
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+        <section>
+          <h2>Multiple assignment 2</h2>
+          <pre><code data-trim>
+def firstName, lastName
 
-		</script>
+(firstName, lastName) = "Miguel Cobá".tokenize()
+println firstName   // Miguel
+println lastName    // Cobá
 
-	</body>
+def (a,b,c) = [1,2]
+println "${a} ${b} ${c}" // 1 2 null
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Parenthesis optional</h2>
+          <pre><code data-trim>
+println("Hello World!") // Hello World!
+println "Hello World!"  // Hello World!
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Safe navigation</h2>
+          <pre><code data-trim>
+def str = null
+println str?.size() // null
+str = "abc"
+println str?.size() // 3
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>if-then-else</h2>
+          <pre><code data-trim>
+def a = 3
+if (a > 2) {
+  println "was true"
+} else {
+  println "was false"
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Loops</h2>
+          <pre><code data-trim>
+while( i > 0 ) {
+  println i--  // post-decrement
+}
+
+10.times { println "hello" }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Reflection</h2>
+          <pre><code data-trim>
+def a = "string"       
+println a.class       // class java.lang.String
+println String.name   // java.lang.String
+println a.class.name  // java.lang.String
+println a.class.fields 
+println a.class.methods
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Booleans</h2>
+          <pre><code data-trim>
+==
+!=
+>
+>=
+<
+<=
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Numbers</h1>
+        </section>
+
+        <section>
+          <h2>Integers</h2>
+          <ul>
+            <li class="fragment">Integer</li>
+            <li class="fragment">Long</li>
+            <li class="fragment">BigInteger</li>
+            <li class="fragment">Short</li>
+            <li class="fragment">Byte</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <pre><code data-trim>
+[110, 300000000000, 1000000000000000000000].each { println it.class }
+println '42'.toInteger()        // 42
+println Integer.parseInt("42")  // 42
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Decimals</h2>
+          <ul>
+            <li class="fragment">Float</li>
+            <li class="fragment">Double</li>
+            <li class="fragment">BigDecimal</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <pre><code data-trim>
+[ 1.23e24, 4.56, 7.8E9, -1e-1].each { println it.class }
+1.23e24.toString()
+(-5.24566e-1234).abs() // 5.24566E-1234
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Dates</h2>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <pre><code data-trim>
+def today = new Date()
+def tomorrow = today + 1
+def yesterday = today - 1
+println today
+println tomorrow
+println yesterday
+println today.after(yesterday)
+
+def c1 = new GregorianCalendar(2010, Calendar.OCTOBER, 8)
+def c2 = new GregorianCalendar(2010, Calendar.OCTOBER, 22)
+println c1.after(c2)  // false
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Collections</h2>
+        </section>
+
+        <section>
+          <h2>Lists 1</h2>
+          <pre><code data-trim>
+def list = [1, 2, 3, 4]
+println list.get(2)         // 3
+println list[2]             // 3
+println list instanceof java.util.List  // true
+
+def empty = []
+println empty.size()        // 0
+empty.add(10)
+println empty.size()        // 1
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Lists 2</h2>
+          <pre><code data-trim>
+def list = [ 1, 2 ,-4 , "hello", new Date()]
+println list.size()   // 5
+println list[0]       // 1
+println list.first()  // 1
+println list.last()   // Mon Jan 25 11:32:15 CDT 2010
+list << "new value"
+println list.last()   // new value
+
+def list2 = [ 1, 2, 3 ]
+list2 << [4, 5]
+println list2        // [1, 2, 3, [4, 5]]
+def list3 = list2.flatten()
+println list3.size() // 4
+println list3        // [1, 2, 3, 4, 5]
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Operations 1</h2>
+          <pre><code data-trim>
+def items = ['one','two','three','four','five']
+items.findAll { it.size() > 3 }   // [ 'three', 'four', 'five' ]
+items.collect { it.capitalize() } // ['One','Two','Three','Four','Five']
+items.each { println it } // prints each element
+items.eachWithIndex { v, i -> 
+  println "${i}: ${v}"
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Operations 2</h2>
+          <p>http://groovy.codehaus.org/groovy-jdk</p>
+          <ul>  
+            <li>findIndexOf</li>
+            <li>grep</li>
+            <li>any</li>
+            <li>every</li>
+            <li>min</li>
+            <li>max</li>
+            <li>flatten</li>
+            <li>intersect</li>
+            <li>sort</li>
+            <li>join</li>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Start operator</h2>
+          <pre><code data-trim>
+['one', 'two', 'three']*.size() // [3, 3, 5]
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <pre><code data-trim>
+def list = [1, 2, 2, 3]
+println list - [2]    // [1, 3]
+list.clear() 
+println list          // []
+list << 1
+list << 2
+println list.contains(2)  // true
+println list.count(1)     // 1
+list * 2                  // [1,2,1,2]
+list.indexOf(1)           // 0
+list.lastIndexOf(1)       // 2
+println list.reverse()    // [2, 1, 2, 1]
+list.removeAll(1)         // [2, 2]
+list.unique()             // [2]
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Array</h2>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <pre><code data-trim>
+def a = new Object[3]
+println a.size()  // 3
+println a.length  // 3
+a[0] = 'a'
+println a[0..1]   // ['a', null]
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Maps</h1>
+        </section>
+
+        <section>
+          <h2>Maps</h2>
+          <ul>
+            <li class="fragment">key/value store</li>
+            <li class="fragment">keys are strings by default</li>
+            <li class="fragment">use () to avoid conversion to string in keys</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Examples 1</h2>
+          <pre><code data-trim>
+def map = [ "first":1, 2:"number two", "3": 3.0]
+println map["first"]          // 1
+println map.first             // 1
+println map."2"               // null
+println map[2]                // number two
+println map[3]                // null
+println map["3"]              // 3.0
+println map."3"               // 3.0
+map.fourth = "new value"     
+println map.fourth            // new value
+println map.class             // null
+println map.getClass()        // java.util.LinkedHashMap
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Examples 2</h2>
+          <pre><code data-trim>
+def map = [name: "Miguel",
+          age: 31,
+          date: new Date(),
+          items: []]
+println map.get("name") // Miguel
+println map["name"]     // Miguel
+println map.name        // Miguel
+println map['items']    // []
+println map instanceof java.util.Map  // true
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Examples 3</h2>
+          <pre><code data-trim>
+def map = [:]
+println map.size()  // 0
+map.put("foo", 5)
+println map.size()  // 1
+println map.foo     // 5
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Examples 4</h2>
+          <pre><code data-trim>
+def a = 5   
+def map = [a:5, (a): 10]
+println map["a"]      // 5
+println map.a         // 5
+println map[5]        // 10
+println map[a]        // 10
+map.foo = "new value"
+println map.foo       // new value
+          </code></pre>
+        </section>
+
+
+
+
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <pre><code data-trim>
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Fin</h1>
+          <p>Miguel Cobá / miguel.leugim.com.mx</p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="revealjs/lib/js/head.min.js"></script>
+    <script src="revealjs/js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
 </html>
