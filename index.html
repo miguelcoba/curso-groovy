@@ -655,62 +655,446 @@ println "Miguel".replace("igu","anu")
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 1</h2>
           <pre><code data-trim>
+println "miguel" ==~ /miguel/
+println "miguel" ==~ /mi...l/
+println "miguel" ==~ /migu./
+println "pattern" ==~ /patterns?/
+println "patterns" ==~ /patterns?/
+println "miguel" ==~ /m(igu|anu)el/
+println "manuel" ==~ /m(igu|anu)el/
+println "mel" ==~ /m(igu|anu)?el/
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 2</h2>
           <pre><code data-trim>
+a?    0 or 1       
+
+empty string or 'a'
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 3</h2>
           <pre><code data-trim>
+a*    0 or more    
+
+empty string, 'a', 'aa', 'aaa', 'aaaa', etc
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 4</h2>
           <pre><code data-trim>
+a+    1 or more    
+
+'a', 'aa', 'aaa', etc
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 5</h2>
           <pre><code data-trim>
+a|b   a or b       
+
+'a' or 'b' but not both
+
+
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 6</h2>
           <pre><code data-trim>
+.     any single char 
+
+'a', 'x', '1', '+', etc
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 7</h2>
           <pre><code data-trim>
+[abcde]   any of a,b,c,d or e          
+
+'a','b','c','d','e'
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 8</h2>
           <pre><code data-trim>
+[1-3]    range, matches any of the char in the range   
+
+- '1', '2','3'
           </code></pre>
         </section>
 
         <section>
-          <h2></h2>
+          <h2>regexp 9</h2>
           <pre><code data-trim>
+[^123]   any except 1, 2 or 3            
+
+- '4', 'r', '+'
           </code></pre>
         </section>
 
         <section>
-          <h1>Fin</h1>
-          <p>Miguel Cobá / miguel.leugim.com.mx</p>
+          <h2>regexp 10</h2>
+          <pre><code data-trim>
+(abc)    group an expression            
+
+'abc'
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>regexp 11</h2>
+          <pre><code data-trim>
+^a       a at the beginning of line     
+
+'a'
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>regexp 12</h2>
+          <pre><code data-trim>
+a$       a at the end of line           
+
+'a'
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>matcher =~</h2>
+          <pre><code data-trim>
+def csv = "Coba, Miguel, 31, Groovy, Grails"
+def regexp = 
+/([a-zA-Z]+), ([a-zA-Z]+), ([0-9]+), ([a-zA-Z]+), ([a-zA-Z]+)/
+def matcher = (csv =~ regexp)
+if (matcher.matches()) {
+  println(matcher.count)    // 1
+  println(matcher[0])       
+    // [Coba, Miguel, 31, Groovy, Grails]
+  println(matcher[0][1])    // Cobá
+  println(matcher[0][2])    // Miguel
+  println(matcher[0][3])    // 31
+  println(matcher[0][4])    // Groovy
+  println(matcher[0][5])    // Grails
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>replacement</h2>
+          <pre><code data-trim>
+def str = "A string is always a string"
+def matcher = (str =~ /string/)
+str = matcher.replaceAll("number")
+println (str)
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Classes</h1>
+        </section>
+
+        <section>
+          <h2>Examples</h2>
+          <pre><code data-trim>
+class Counter {
+  def num = 0
+  def incr() { num++ }
+  def decr() { num-- }
+}
+def c = new Counter()
+c.incr()
+println c.num             // 1
+1000.times { c.decr() }
+println c.num             // -999
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Closures</h1>
+        </section>
+
+        <section>
+          <h2>Closures</h2>
+          <p>Anonymous block of code that may</p>
+          <ul>
+            <li class="fragment">Take arguments</li>
+            <li class="fragment">Return a value</li>
+            <li class="fragment">Reference and use variables declared in its surrounding scope</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Syntax</h2>
+          <p>{ [arguments ->] statements }</p>
+          <ul>
+            <li class="fragment">[arguments ->]: optional comma-delimited list of arguments, typed or untyped</li>
+            <li class="fragment">statements: 0 or more groovy statements</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Closure semantics</h1>
+        </section>
+
+        <section>
+          <h2>Closures are anonymous</h2>
+          <ul>
+            <li class="fragment">Can be referenced using untyped variables or typed variables of type Closure</li>
+            <li class="fragment">Can be passed as method arguments and as arguments to other closures</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Implicit method</h2>
+          <ul>
+            <li class="fragment">Closures have one implicitly defined method, the one described by the arguments and body of the closure.</li>
+            <li class="fragment">Implicit method name is doCall()</li>
+            <li class="fragment">It is invoked by the call() method or the () syntax</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Arguments 1</h2>
+          <ul>
+            <li class="fragment">A closure has at least one argument, available as the implicit parameter *it* IF NO EXPLICIT parameters are defined.</li>
+            <li class="fragment">Explicit arguments can be typed or untyped.  When a parameter list is specified, the *it* variable is not available</li>
+            <li class="fragment">They are checked at runtime, not at compile time</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Arguments 2</h2>
+          <ul>
+            <li class="fragment">If last argument is of type Object[], any excess arguments at invocation time are placed there</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Example</h2>
+          <pre><code data-trim>
+def msgSum = { text, Object[] args ->
+  def sum = 0
+  args.each { sum += it }
+  text + sum
+}
+println msgSum("The sum is:", 1, 2)
+println msgSum("The sum is:", 1, 2, 4, 5)
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Return value</h2>
+          <p>Always return a value</p>
+          <ul>
+            <li class="fragment">one or more explicit return statements</li>
+            <li class="fragment">value of the last executed statement if no explicit return</li>
+            <li class="fragment">if the last statement has no value, null is returned</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Example</h2>
+          <pre><code data-trim>
+def currencyConverter = { rate, value ->
+  rate * value
+}
+def usdMxnConverter = currencyConverter.curry(13)
+def eurMxnConverter = currencyConverter.curry(19)
+println usdMxnConverter(5) // 5 USD -> 65 MXN
+println eurMxnConverter(2) // 2 EUR -> 38 MXN
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 2</h2>
+          <pre><code data-trim>
+def pr = { println it }
+pr("hola mundo")      // hola mundo
+pr(2)                 // 2
+pr(new Date())        // Sun Oct 13 11:11:11 CDT 2010
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 3</h2>
+          <pre><code data-trim>
+def square = { it * it }
+println([1, 2, 3, 4].collect(square)) // [1, 4, 9, 16]
+[1, 2, 3, 4].each(pr)                 // 1\n2\n3\n4\n
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 4</h2>
+          <pre><code data-trim>
+def aValue = 3
+def cl = { aValue * it }
+println cl(4)                 // 12
+println ([1, 2].collect(cl))  // [3, 6]
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 5</h2>
+          <pre><code data-trim>
+def cl = { param -> param + 4 }
+cl(6)     // 10
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 6</h2>
+          <pre><code data-trim>
+def cl = { p1, p2 -> p1 * p2 }
+println cl(3,4)         // 12
+println cl("hola", 3)   // holaholahola 
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 7</h2>
+          <pre><code data-trim>
+def l = [ 1, 2, 3, 4 ]
+def sum = 0
+l.each {
+  sum += it
+}
+println "sum: ${sum}"
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 8</h2>
+          <pre><code data-trim>
+def myFile = new File("file.txt") // file.txt is in current directory
+printFileLine = { println "File line: " + it }
+myFile.eachLine( printFileLine )
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Groovy JDK</h1>
+        </section>
+
+        <section>
+          <h2>Groovy JDK</h2>
+          <p><a href="http://groovy.codehaus.org/groovy-jdk/">http://groovy.codehaus.org/groovy-jdk/</a></p>
+        </section>
+
+        <section>
+          <h1>SQL</h1>
+        </section>
+
+        <section>
+          <h2>Simple query</h2>
+          <pre><code data-trim>
+import groovy.sql.Sql
+def sql = Sql.newInstance(
+        "jdbc:mysql://172.16.1.97/groovy",  // JDBC URL
+        "groovy","groovy",                  // user, password
+        "com.mysql.jdbc.Driver")            // JDBC Driver
+sql.eachRow("select * from table", 
+     { println "${it.id} ${it.aCol}" })
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Groovy technical details</h1>
+        </section>
+
+        <section>
+          <h2>Default imports</h2>
+          <ul>
+            <li>java.io.*</li>
+            <li>java.lang.*</li>
+            <li>java.math.BigDecimal</li>
+            <li>java.math.BigInteger</li>
+            <li>java.net.*</li>
+            <li>java.util.*</li>
+            <li>groovy.lang.*</li>
+            <li>groovy.util.*</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Assignment and equality</h2>
+          <pre><code data-trim>
+== equality operator
+= assignment operator
+is()
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Reserved words</h2>
+          <pre><code data-trim>
+in
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Arrays</h2>
+          <pre><code data-trim>
+def int[] a = [1,2,3]
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Optional elements</h2>
+          <pre><code data-trim>
+semicolon (;)
+return
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Differences with Java</h2>
+          <p>methods and classes are public by default</p>
+        </section>
+
+        <section>
+          <h2>Exercise</h2>
+          <aside class="notes">
+          <pre><code data-trim>
+import groovy.sql.Sql
+
+def sql = Sql.newInstance("jdbc:mysql://172.16.1.97/groovy", "groovy","groovy", "com.mysql.jdbc.Driver")
+def myFile = new File("dump.txt")
+
+sql.eachRow("select * from tabla", { row ->
+    def id = row.id ==~ /[0-9]/
+    def email = row.email ==~ /.*@.*\..*/
+    
+    if(!id) { println "Bad id: ${row.id}" }
+    if(!email) { println "Bad email: ${row.email}" }
+    
+    if (id && email) {
+        def line = row.toRowResult().values().join('|')            
+        println "Inserting ${line}" 
+        myFile << line           
+    } else {
+        println "Bad record: ${row}"
+    }      
+})
+          </code></pre>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Thanks!</h1>
+          <p>Miguel Cobá</p>
+          <p><a href="http://miguel.leugim.com.mx">http://miguel.leugim.com.mx</a></p>
+          <p><a href="mailto:miguel.coba@gmail.com">miguel.coba@gmail.com</a></p>
         </section>
 
       </div>
