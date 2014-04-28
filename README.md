@@ -1,7 +1,7 @@
-curso-groovy
+groovy-intro
 ============
 
-Curso de Groovy
+Groovy Intro
 
 Setup
 =========
@@ -13,4 +13,3 @@ After cloning, initialize submodule
 and fetch submodule
 
 	git submodule update
-
